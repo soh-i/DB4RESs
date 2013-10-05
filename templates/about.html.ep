@@ -1,0 +1,37 @@
+% layout 'bootstrap';
+% title 'About';
+
+<!DOCTYPE html>
+<html lang="ja">
+  <body>
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" >DB4RESs</a>
+          <ul class="nav">
+            <li><a href="/">Home</a></li>
+            <li><a href="about">About</a></li>
+            <li><a href="help">Help</a></li>
+            <li><a href="download">Download</a></li>
+            <li><a href="contact">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-header">
+      <br>
+      <h1>Database for RNA editing sites</h1>
+      <p class="lead">About this database</p>
+    </div>
+
+    <div class="row">
+      <div class="span12">
+        <div class="footer">
+          This project licensed under <i>not yet</i>.
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+

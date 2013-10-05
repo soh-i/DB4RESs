@@ -1,0 +1,60 @@
+% layout 'bootstrap';
+% title 'Download';
+
+<!DOCTYPE html>
+<html lang="ja">
+  <body>
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" >DB4RESs</a>
+          <ul class="nav">
+            <li><a href="/">Home</a></li>
+            <li><a href="about">About</a></li>
+            <li><a href="help">Help</a></li>
+            <li><a href="download">Download</a></li>
+            <li><a href="contact">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <div class="page-header">
+      <br>
+      <h1>Database for RNA editing sites</h1>
+      <p class="lead">Row data download</p>
+    </div>
+    
+    <div class="row">
+      <div class="span12">
+        <form class="form-vertical">
+          <div class="control-group">
+            <label class="control-label" for="select01">Organism</label>
+            <div class="controls">
+              <select id="select01">
+                <option>Human</option>
+                <option>Fruit fly</option>
+                <option>Mouse</option>
+              </select>
+            </div>
+          </div>
+        </form>
+
+        <label class="control-label" for="optionsCheckbox">Data format</label>
+        <div class="controls">
+          <label class="checkbox">
+            <input type="checkbox" id="optionsCheckbox" value="option1">
+            <p>VCF (variant call format)</p>
+            <input type="checkbox" id="optionsCheckbox" value="option1">
+            <p>BED</p>
+            <input type="checkbox" id="optionsCheckbox" value="option1">
+            <p>mysql dump</p>
+          </label>
+        </div>
+        
+        <button class="btn btn-info">
+          <class="btn btn-large">Download</button>
+      </div>
+    </div>
+  </body>
+</html>

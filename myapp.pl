@@ -19,17 +19,50 @@ get '/result' => sub {
     if (!$sp or !$chr or !$region) {
         $self->render(text=>"Error: Value is empty");
     }
-    if ($sp =~ m/^\w+$/
-        and $chr =~ m/(^chr\d+$)|(^\d+$)|(^[xyXY]{1}$)/
-        and $region =~ m/^\d+$/) {
-        $self->stash(sp => $sp);
-        $self->stash(chr => $chr);
-        $self->stash(region => $region);
-        $self->render();
+    
+    if ($sp =~ m/^Human$/) {
+        if ($chr =~ m/(^chr\d+$)|(^\d+$)|(^[xyXY]{1}$)/
+            and $region =~ m/^\d+$/) {
+            $self->stash(sp => $sp);
+            $self->stash(chr => $chr);
+            $self->stash(region => $region);
+            $self->render();
+        } else {
+            _value_error($self);
+        }
+    }
+    elsif ($sp =~ m/^Fruit_fly$/) {
+        if ($chr =~ m/(3L)|([XU])|(Uextra)|(2RHet)|(3LHet)|(3R)|(3RHet)|(YHet)|(2L)|(2LHet)|(2R)(XHet)/
+            and $region =~ m/^\d+$/) {
+            $self->stash(sp => $sp);
+            $self->stash(chr => $chr);
+            $self->stash(region => $region);
+            $self->render();
+        } else {
+            _value_error($self);
+        }
+    }
+    elsif ($sp =~ m/^Mouse$/) {
+        if ($chr =~ /^\d+$/
+            and $region =~ m/^\d+$/) {
+            $self->stash(sp => $sp);
+            $self->stash(chr => $chr);
+            $self->stash(region => $region);
+            $self->render();
+        }
+        else {
+            _value_error($self);
+        }
     } else {
-        $self->render(text=>"Error: Invald data is given");
+        _value_error($self);
     }
 };
+
+sub _value_error {
+    my $s = shift;
+    return $s->render(inline=>"<p><b>Error: invalid data is given</p>");
+};
+    
 
 get '/about' => sub {
     my $self = shift;

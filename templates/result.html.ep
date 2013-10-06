@@ -1,0 +1,57 @@
+% layout 'bootstrap';
+% title 'Result';
+
+<!DOCTYPE html>
+<html lang="ja">
+  <body>
+    <!-- Header -->
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand">Eryngii</a>
+          <ul class="nav">
+            <li><a href="/">Home</a></li>
+            <li><a href="about">About</a></li>
+            <li><a href="help">Help</a></li>
+            <li><a href="download">Download</a></li>
+            <li><a href="contact">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="page-header">
+      <br>
+      <h1>Eryngii</h1>
+      <p class="lead">Search result</p>
+    </div>
+
+    <table class="table table-striped table-condensed">
+      <thead>
+        <tr>
+          <th>Species</th>
+          <th>Sample</th>
+          <th>Chromosome</th>
+          <th>Position</th>
+          <th>Coverage</th>
+          <th>Editing ratio</th>
+        </tr>
+        <tr>
+          <td><%= $sp %></td>
+          <td>Brain</td>
+          <td><%= $chr %></td>
+          <td><%= $region %> </td>
+          <td>122</td>
+          <td>0.42</td>
+        </tr>
+        <tr>
+          <td><%= $sp %></td>
+          <td>Brain</td>
+          <td><%= $chr %></td>
+          <td><%= $region %> </td>
+          <td>122</td>
+          <td>0.42</td>
+        </tr>
+      </thead>
+    </table>
+  </body>
+</html>

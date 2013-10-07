@@ -1,6 +1,11 @@
 #!/usr/bin/env perl
 
 use Mojolicious::Lite;
+use lib qw{lib};
+use DB4RESs::Generator::InsertDB;
+#my $t = DB4RESs::Generator::InsertDB->new("test");
+#print $t;
+#$t->read_file();
 
 plugin 'PODRenderer';
 

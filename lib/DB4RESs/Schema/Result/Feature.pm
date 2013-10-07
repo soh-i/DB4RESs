@@ -6,7 +6,7 @@ use parent 'DBIx::Class::Schema';
 __PACKAGE__->load_components(qw/Core/);
 __PACKAGE__->table("feature");
 __PACKAGE__->add_columns(
-                         feature_id => {
+                         f_id => {
                                 data_type => "INTEGER",
                                 is_auto_increment => 1,
                                 is_nullable => 0,
@@ -29,7 +29,8 @@ __PACKAGE__->add_columns(
                                      }
                         );
 
-__PACKAGE__->set_primary_key("feature_id");
-#__PACKAGE__->belongs_to(base => 'DB4RESs::Schema::Result::Base','base_id');
+__PACKAGE__->set_primary_key("f_id");
+__PACKAGE__->belongs_to(base => 'DB4RESs::Schema::Result::Feature', 'f_id');
+
 
 1;

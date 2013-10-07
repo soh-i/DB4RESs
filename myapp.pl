@@ -9,6 +9,7 @@ use DB4RESs::Generator::InsertDB;
 
 plugin 'PODRenderer';
 
+
 get '/' => sub {
   my $self = shift;
   $self->render('index');
@@ -25,40 +26,31 @@ get '/result' => sub {
         $self->render(text=>"Error: Value is empty");
     }
     
-    if ($sp =~ m/^Human$/) {
-        if ($chr =~ m/(^chr\d+$)|(^\d+$)|(^[xyXY]{1}$)/
-            and $region =~ m/^\d+$/) {
-            $self->stash(sp => $sp);
-            $self->stash(chr => $chr);
-            $self->stash(region => $region);
-            $self->render();
-        } else {
-            _value_error($self);
-        }
+    if ($sp =~ m/^Human$/
+        and $chr =~ m/(^chr\d+$)|(^\d+$)|(^[xyXY]{1}$)/
+        and $region =~ m/^\d+$/) {
+        $self->stash(sp => $sp);
+        $self->stash(chr => $chr);
+        $self->stash(region => $region);
+        $self->render();
     }
-    elsif ($sp =~ m/^Fruit_fly$/) {
-        if ($chr =~ m/(3L)|([XU])|(Uextra)|(2RHet)|(3LHet)|(3R)|(3RHet)|(YHet)|(2L)|(2LHet)|(2R)(XHet)/
-            and $region =~ m/^\d+$/) {
-            $self->stash(sp => $sp);
-            $self->stash(chr => $chr);
-            $self->stash(region => $region);
-            $self->render();
-        } else {
-            _value_error($self);
-        }
+    elsif ($sp =~ m/^Fruit_fly$/
+        and $chr =~ m/(3L)|([XU])|(Uextra)|(2RHet)|(3LHet)|(3R)|(3RHet)|(YHet)|(2L)|(2LHet)|(2R)(XHet)/
+        and $region =~ m/^\d+$/) {
+        $self->stash(sp => $sp);
+        $self->stash(chr => $chr);
+        $self->stash(region => $region);
+        $self->render();
     }
-    elsif ($sp =~ m/^Mouse$/) {
-        if ($chr =~ /^\d+$/
-            and $region =~ m/^\d+$/) {
-            $self->stash(sp => $sp);
-            $self->stash(chr => $chr);
-            $self->stash(region => $region);
-            $self->render();
-        }
-        else {
-            _value_error($self);
-        }
-    } else {
+    elsif ($sp =~ m/^Mouse$/
+        and $chr =~ /(^\d+$)|(^chr\d+$)/
+        and $region =~ m/^\d+$/) {
+        $self->stash(sp => $sp);
+        $self->stash(chr => $chr);
+        $self->stash(region => $region);
+        $self->render();
+    }
+    else {
         _value_error($self);
     }
 };

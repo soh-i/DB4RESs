@@ -4,11 +4,11 @@
 <!DOCTYPE html>
 <html lang="ja">
   <body>
-
-      <div class="navbar navbar-fixed-top">
-        <div class="navbar-inner">
-          <div class="container">
-          <a class="brand" >DB4RESs</a>
+    <!-- Header -->
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand">Eryngii</a>
           <ul class="nav">
             <li><a href="/">Home</a></li>
             <li><a href="about">About</a></li>
@@ -16,58 +16,54 @@
             <li><a href="download">Download</a></li>
             <li><a href="contact">Contact</a></li>
           </ul>
-          </div>
         </div>
       </div>
-      
-      <div class="page-header">
-        <br>
-        <h1>Database for RNA editing sites</h1>
-        <p class="lead">Search editing site from location, gene and metadata</p>
-      </div>
-
+    </div>
+    <div class="page-header">
+      <br>
+      <h1>Eryngii</h1>
+      <p class="lead">is database for RNA editing sites</p>
+    </div>
+    
+    <!-- Contents -->
     <div class="row">
       <div class="span12">
         <div class="tabbable tabs-left">
           <ul class="nav nav-tabs">
-            <li class="active"><a href="#1" data-toggle="tab">Gene based</a></li>
-            <li><a href="#2" data-toggle="tab">Location based</a></li>
-            <li><a href="#3" data-toggle="tab">Meadata based</a></li>
+            <li class="active"><a href="#1" data-toggle="tab">Location based</a></li>
+            <li><a href="#2" data-toggle="tab">Gene based</a></li>
+            <li><a href="#3" data-toggle="tab">ID based</a></li>
+            <li><a href="#4" data-toggle="tab">Metadata based</a></li>
           </ul>
-          
           <div class="tab-content">
-            <!-- gene based -->
+            
+            <!-- location based -->
             <div class="tab-pane active" id="1">
               <div class="spand6">
-                <form class="form-vertical">
-                  <p class="lead">Gene based search</p>
+                <form class="form-vertical" action="/result">
+                  <p class="lead">Location based search</p>
                   <div class="control-group">
                     <label class="control-label" for="select01">Select organism</label>
                     <div class="controls">
-                      <select id="select01">
-                        <option>Human</option>
-                        <option>Fruit fly</option>
-                        <option>Mouse</option>
-                      </select>
+                      <%= select_field sp => [qw/Human Fruit_fly Mouse/], id=>"sp" %>
+                      <label class="control-label" for="input02">Location</label>
+                      <%= input_tag 'chr', type=>'text', class=>"input-medium search-query", placeholder=>"chr" %>
+                      <%= input_tag 'region', type=>'text', class=>"input-medium search-query", placeholder=>"region" %>
+                      <button type="submit" class="btn">Submit</button>
                     </div>
                   </div>
-                </form>
-                <form class="form-vertical">
-                  <label class="control-label" for="input02">Location</label>
-                  <input type="text" class="input-medium search-query" placeholder="chromosome">
-                  <input type="text" class="input-medium search-query" placeholder="position">
-                  <button type="submit" class="btn">Search</button>
                 </form>
               </div>
             </div>
             
-            <!-- location based  -->
+            <!-- gene based  -->
             <div class="tab-pane" id="2">
-              <div class="span6">
-                <form class="form-vertical">
-                  <p class="lead">2. Search for location</p>
+              <div class="span8">
+                <form class="form-horizontal">
+                  <p class="lead">Gene based search</p>
                   <div class="control-group">
                     <label class="control-label" for="select01">Organisms</label>
+                    <label class="control-label" for="input01">Gene</label>
                     <div class="controls">
                       <select id="select01">
                         <option>Human</option>
@@ -75,35 +71,54 @@
                         <option>Mouse</option>
                       </select>
                     </div>
-                  </div>
-                  <!-- gene -->
-                  <form class="form-vertical">
-                    <label class="control-label" for="input01">Gene</label>
                     <input type="text" class="input-medium search-query" placeholder="gene name">
-                  </form>
-                </form>
+                  </div>
+
+                  <label class="control-label" for="select02">Advansed filter</label>
+                  <div class="controls">
+                    <select id="select02">
+                      <option>Editing frequency</option>
+                      <option>Tissue</option>
+                      <option>Strain</option>
+                      <option>Gene exp. (FPKM)</option>
+                      <option>Coverage</option>
+                    </select>
+                    <form class="form-vertical">
+                      <label class="control-label" for="input03">Term</label>
+                      <input type="text" class="input-medium search-query" placeholder="term">
+                    </form>
+                  </div>
               </div>
             </div>
             
-            <!-- for matadata -->
+            <!-- for ID -->
             <div class="tab-pane" id="3">
               <div class="span6">
                 <form class="form-search">
-                  <p class="lead">3. Metadata based search</p>
-                  <input type="text" class="input-medium search-query">
+                  <p class="lead">ID based search</p>
+                  <input type="text" class="input-medium search-query", placeholder="PMID, GEO, SRA...">
                   <button type="submit" class="btn">Submit</button>
+                </form>
+              </div>
+            </div>
+
+            <!-- for metadata -->
+            <div class="tab-pane" id="4">
+              <div class="span6">
+                <form class="form-vertical">
+                  <p class="lead">Metadata based search</p>
                 </form>
               </div>
             </div>
           </div>
         </div>
         
-        <div class="span12">
-          <div class="footer">
-            This project licensed under <i>not yet</i>.
-          </div>
+        <div class="footer">
+          <br>
+          <br>
+          <p>This project licensed under <i>not yet</i>.</p>
         </div>
       </div>
-      
+    </div>
   </body>
 </html>

@@ -7,7 +7,7 @@
     <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
-          <a class="brand" >DB4RESs</a>
+          <a class="brand">Eryngii</a>
           <ul class="nav">
             <li><a href="/">Home</a></li>
             <li><a href="about">About</a></li>
@@ -18,10 +18,10 @@
         </div>
       </div>
     </div>
-
+    
     <div class="page-header">
       <br>
-      <h1>Database for RNA editing sites</h1>
+      <h1>Eryngii</h1>
       <p class="lead">About this database</p>
     </div>
 
